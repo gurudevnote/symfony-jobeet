@@ -1,0 +1,3 @@
+jo_beet_homepage:
+    path:     /
+    defaults: { _controller: JoBeetBundle:Default:index }

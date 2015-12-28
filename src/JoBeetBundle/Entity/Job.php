@@ -3,6 +3,7 @@
 namespace JoBeetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JoBeetBundle\Utils\JoBeet as JoBeet;
 
 /**
  * Job
@@ -505,6 +506,21 @@ class Job
     public function setUpdatedAtValue()
     {
         $this->updated_at = new \DateTime();
+    }
+
+    public function getCompanySlug()
+    {
+        return JoBeet::slugify($this->getCompany());
+    }
+ 
+    public function getPositionSlug()
+    {
+        return JoBeet::slugify($this->getPosition());
+    }
+ 
+    public function getLocationSlug()
+    {
+        return JoBeet::slugify($this->getLocation());
     }
 }
 

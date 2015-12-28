@@ -2,6 +2,8 @@
 
 namespace JoBeetBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Job
  */

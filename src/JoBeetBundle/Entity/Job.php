@@ -493,7 +493,7 @@ class Job
     {        
         if(!$this->getCreatedAt())
         {
-            $this->created_at(new \DateTime());
+            $this->created_at = new \DateTime();
         }
     }
 

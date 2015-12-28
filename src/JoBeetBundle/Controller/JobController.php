@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use JoBeetBundle\Entity\Job;
 use JoBeetBundle\Form\JobType;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Job controller.
@@ -26,7 +27,11 @@ class JobController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $jobs = $em->getRepository('JoBeetBundle:Job')->findAll();
+        $query = $em->createQuery(
+            'SELECT j FROM JoBeetBundle:Job j WHERE j.expires_at > :date'
+        )->setParameter('date', new \DateTime());
+
+        $jobs = $query->getResult();
 
         return $this->render('job/index.html.twig', array(
             'jobs' => $jobs,

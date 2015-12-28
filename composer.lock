@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dbfceb0fa44b47f4284104721792c043",
-    "content-hash": "e7d4d8daaecd0893287e0cd31ef79f6b",
+    "hash": "9cf66d4dadd2167aefb1301fbaaf3dc9",
+    "content-hash": "21e587a9da6a139306c5507c3d31b3b5",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1945,16 +1945,16 @@
     "packages-dev": [
         {
             "name": "sensio/generator-bundle",
-            "version": "v3.0.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "525e078ff7d5e9f19b0ef912bb6d6753673b3c66"
+                "reference": "404648e66621296780ad8652e5d004bfb43b3389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/525e078ff7d5e9f19b0ef912bb6d6753673b3c66",
-                "reference": "525e078ff7d5e9f19b0ef912bb6d6753673b3c66",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/404648e66621296780ad8652e5d004bfb43b3389",
+                "reference": "404648e66621296780ad8652e5d004bfb43b3389",
                 "shasum": ""
             },
             "require": {
@@ -1993,7 +1993,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2015-12-20 20:01:41"
+            "time": "2015-12-28 09:05:05"
         },
         {
             "name": "symfony/phpunit-bridge",
@@ -2054,7 +2054,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "symfony/symfony": 20
+        "symfony/symfony": 20,
+        "sensio/generator-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

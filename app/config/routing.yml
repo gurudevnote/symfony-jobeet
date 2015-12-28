@@ -1,3 +1,7 @@
+jo_beet_job:
+    resource: "@JoBeetBundle/Controller/JobController.php"
+    type:     annotation
+
 jo_beet:
     resource: "@JoBeetBundle/Resources/config/routing.yml"
     prefix:   /

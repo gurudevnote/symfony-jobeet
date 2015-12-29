@@ -164,7 +164,7 @@ class Category
 
     public function getSlug()
     {
-        return JoBeet::slugify($this->getName());
+        return $this->slug;
     }
 
     public function setMoreJobs($jobs)
@@ -200,14 +200,6 @@ class Category
      */
     public function setSlugValue()
     {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setSlugValue()
-    {
-        // Add your code here
+        $this->slug = Jobeet::slugify($this->getName());
     }
 }

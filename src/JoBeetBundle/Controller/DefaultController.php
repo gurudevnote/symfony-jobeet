@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('JoBeetBundle:Default:index.html.twig');
+        return $this->redirectToRoute('job_index');
     }
 }

@@ -1,6 +1,7 @@
 # src/JoBeetBundle/Resources/config/doctrine/Job.orm.yml
 JoBeetBundle\Entity\Job:
   type: entity
+  repositoryClass: JoBeetBundle\Repository\JobRepository
   table: job
   id:
     id:

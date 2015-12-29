@@ -1,6 +1,7 @@
 <?php
 
 namespace JoBeetBundle\Entity;
+use JoBeetBundle\Utils\JoBeet;
 
 /**
  * Category
@@ -156,5 +157,10 @@ class Category
     public function getActiveJobs()
     {
         return $this->active_jobs;
+    }
+
+    public function getSlug()
+    {
+        return JoBeet::slugify($this->getName());
     }
 }

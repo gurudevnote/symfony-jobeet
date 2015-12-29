@@ -13,6 +13,11 @@ class JoBeet
  
         // trim and lowercase
         $text = strtolower(trim($text, '-'));
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
  
         return $text;
     }

@@ -11,7 +11,7 @@ use Doctrine\ORM\NoResultException;
  */
 class JobRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getActiveJobs($category_id = null, $max = null)
+    public function getActiveJobs($category_id = null, $max = null, $offset = null)
     {
         $qb = $this->createQueryBuilder('j')
             ->where('j.expires_at > :date')
@@ -21,6 +21,11 @@ class JobRepository extends \Doctrine\ORM\EntityRepository
         if($max)
         {
             $qb->setMaxResults($max);
+        }
+
+        if($offset)
+        {
+            $qb->setFirstResult($offset);
         }
 
         if($category_id)

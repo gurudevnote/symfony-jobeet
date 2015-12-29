@@ -18,7 +18,7 @@ class CategoryController extends Controller
      */
     public function showAction(Category $category)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $category->setActiveJobs($em->getRepository('JoBeetBundle:Job')->getActiveJobs($category->getId()));
 
         return $this->render(':category:show.html.twig', array(

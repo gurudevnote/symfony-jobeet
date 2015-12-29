@@ -15,5 +15,6 @@ class JoBeetTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals('sensio', Jobeet::slugify('  sensio'));
     $this->assertEquals('sensio', Jobeet::slugify('sensio  '));
     $this->assertEquals('n-a', Jobeet::slugify(''));
+    $this->assertEquals('developpeur-web', Jobeet::slugify('Développeur Web'));
   }
 }

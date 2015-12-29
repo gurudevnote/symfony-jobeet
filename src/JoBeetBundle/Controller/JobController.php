@@ -2,13 +2,12 @@
 
 namespace JoBeetBundle\Controller;
 
+use Doctrine\ORM\NoResultException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use JoBeetBundle\Entity\Job;
-use JoBeetBundle\Form\JobType;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Job controller.
@@ -72,6 +71,10 @@ class JobController extends Controller
      */
     public function showAction(Job $job)
     {
+        if($job->isExpired()){
+            throw new NoResultException("active job is not found");
+        }
+
         $deleteForm = $this->createDeleteForm($job);
 
         return $this->render('job/show.html.twig', array(

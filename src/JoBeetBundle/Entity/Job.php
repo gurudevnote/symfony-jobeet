@@ -534,4 +534,16 @@ class Job
             $this->expires_at = new \DateTime(date('Y-m-d H:i:s', $now + 86400 * 30));
         }
     }
+
+    public function isExpired()
+    {
+        if(!$this->getExpiresAt())
+        {
+            return false;
+        }
+        else
+        {
+            return new \DateTime() > $this->getExpiresAt();
+        }
+    }
 }

@@ -1,5 +1,5 @@
 jo_beet_job:
-    resource: "@JoBeetBundle/Controller/JobController.php"
+    resource: "@JoBeetBundle/Controller/"
     type:     annotation
 
 jo_beet:

@@ -1,6 +1,7 @@
 # src/JoBeetBundle/Resources/config/doctrine/Category.orm.yml
 JoBeetBundle\Entity\Category:
   type: entity
+  repositoryClass: JoBeetBundle\Repository\CategoryRepository
   table: category
   id:
     id:

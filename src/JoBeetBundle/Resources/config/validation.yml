@@ -5,6 +5,18 @@ JoBeetBundle\Entity\Job:
     type:
       - Choice: { callback: getTypeValues }
       - NotBlank: ~
+    company:
+      - NotBlank: ~
+    position:
+      - NotBlank: ~
+    location:
+      - NotBlank: ~
+    description:
+      - NotBlank: ~
+    how_to_apply:
+      - NotBlank: ~
+    token:
+      - NotBlank: ~
     email:
      - NotBlank: ~
      - Email: ~

@@ -549,11 +549,11 @@ class Job
 
     public static function getTypes()
     {
-        return array('full-time' => 'Full time', 'part-time' => 'Part time', 'freelance' => 'Freelance');
+        return array('Full time' => 'full-time', 'Part time' => 'part-time', 'Freelance' => 'freelance');
     }
 
     public static function getTypeValues()
     {
-        return array_keys(static::getTypes());
+        return array_values(static::getTypes());
     }
 }

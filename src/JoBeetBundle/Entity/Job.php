@@ -546,4 +546,14 @@ class Job
             return new \DateTime() > $this->getExpiresAt();
         }
     }
+
+    public static function getTypes()
+    {
+        return array('full-time' => 'Full time', 'part-time' => 'Part time', 'freelance' => 'Freelance');
+    }
+
+    public static function getTypeValues()
+    {
+        return array_keys(static::getTypes());
+    }
 }

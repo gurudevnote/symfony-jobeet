@@ -3,6 +3,7 @@
 JoBeetBundle\Entity\Job:
   properties:
     type:
+      - Choice: { callback: getTypeValues }
       - NotBlank: ~
     email:
      - NotBlank: ~

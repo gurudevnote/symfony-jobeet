@@ -26,8 +26,15 @@ class JobControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('.category_administrator .more_jobs')->count() == 1);
 
         $job = $this->getMostRecentProgrammingJob();
-
         $this->assertTrue($crawler->filter('.category_programming tr')->first()->filter(sprintf('a[href*="/%d/"]', $job->getId()))->count() == 1);
+
+        $link = $crawler->selectLink('Web Developer')->first()->link();
+        $client->click($link);
+        $this->assertEquals('JoBeetBundle\Controller\JobController::showAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertEquals($job->getCompanySlug(), $client->getRequest()->attributes->get('company'));
+        $this->assertEquals($job->getLocationSlug(), $client->getRequest()->attributes->get('location'));
+        $this->assertEquals($job->getPositionSlug(), $client->getRequest()->attributes->get('position'));
+        $this->assertEquals($job->getId(), $client->getRequest()->attributes->get('id'));
     }
 
     public function getMostRecentProgrammingJob()

@@ -20,5 +20,9 @@ class JobControllerTest extends WebTestCase
         $kernel->boot();
         $max_jobs_on_homepage = $kernel->getContainer()->getParameter('max_jobs_on_homepage');
         $this->assertLessThanOrEqual($crawler->filter('.category_programming tr')->count(), $max_jobs_on_homepage);
+
+        $this->assertTrue($crawler->filter('.category_design .more_jobs')->count() == 0);
+        $this->assertTrue($crawler->filter('.category_programming .more_jobs')->count() == 1);
+        $this->assertTrue($crawler->filter('.category_administrator .more_jobs')->count() == 1);
     }
 }

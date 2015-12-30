@@ -44,6 +44,10 @@ class JobControllerTest extends WebTestCase
         // an expired job page forwards the user to a 404
         $client->request('GET', sprintf('/job/sensio-labs/paris-france/%d/web-developer', $this->getExpiredJob()->getId()));
         $this->assertTrue(404 === $client->getResponse()->getStatusCode());
+
+        // a non-existent job forwards the user to a 404
+        $client->request('GET', '/job/foo-inc/milano-italy/0/painter');
+        $this->assertTrue(404 === $client->getResponse()->getStatusCode());
     }
 
     public function getMostRecentProgrammingJob()

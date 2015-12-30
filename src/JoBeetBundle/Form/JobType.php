@@ -5,6 +5,7 @@ namespace JoBeetBundle\Form;
 use JoBeetBundle\Entity\Job;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -21,7 +22,7 @@ class JobType extends AbstractType
         $builder
             ->add('type',ChoiceType::class,  array('choices' => Job::getTypes(), 'expanded' => true))
             ->add('company')
-            ->add('logo', null, array('label' => 'Company logo'))
+            ->add('file', FileType::class, array('label' => 'Company logo', 'required' => false))
             ->add('url')
             ->add('position')
             ->add('location')

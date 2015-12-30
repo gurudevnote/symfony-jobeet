@@ -10,6 +10,8 @@ use JoBeetBundle\Utils\JoBeet as JoBeet;
  */
 class Job
 {
+    public $file;
+
     /**
      * @var integer
      */

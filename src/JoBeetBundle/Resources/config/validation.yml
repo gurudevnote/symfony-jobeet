@@ -18,5 +18,7 @@ JoBeetBundle\Entity\Job:
     token:
       - NotBlank: ~
     email:
-     - NotBlank: ~
-     - Email: ~
+      - NotBlank: ~
+      - Email: ~
+    file:
+      - Image: ~

@@ -21,15 +21,15 @@ class JobType extends AbstractType
         $builder
             ->add('type',ChoiceType::class,  array('choices' => Job::getTypes(), 'expanded' => true))
             ->add('company')
-            ->add('logo')
+            ->add('logo', null, array('label' => 'Company logo'))
             ->add('url')
             ->add('position')
             ->add('location')
             ->add('description')
-            ->add('how_to_apply')
+            ->add('how_to_apply', null, array('label' => 'How to apply?'))
             ->add('token')
-            ->add('is_public')
-            ->add('is_activated')
+            ->add('is_public', null, array('label' => 'Public?'))
+            ->add('is_activated', null, array('label' => 'Active?'))
             ->add('email')
 //            ->add('expires_at', DateType::class, array(
 //                'input'  => 'datetime',

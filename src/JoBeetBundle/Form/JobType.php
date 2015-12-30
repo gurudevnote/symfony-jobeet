@@ -28,18 +28,18 @@ class JobType extends AbstractType
             ->add('is_public')
             ->add('is_activated')
             ->add('email')
-            ->add('expires_at', DateType::class, array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
-            ))
-            ->add('created_at', DateType::class, array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
-            ))
-            ->add('updated_at', DateType::class, array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
-            ))            
+//            ->add('expires_at', DateType::class, array(
+//                'input'  => 'datetime',
+//                'widget' => 'choice',
+//            ))
+//            ->add('created_at', DateType::class, array(
+//                'input'  => 'datetime',
+//                'widget' => 'choice',
+//            ))
+//            ->add('updated_at', DateType::class, array(
+//                'input'  => 'datetime',
+//                'widget' => 'choice',
+//            ))
             ->add('category')
         ;
     }

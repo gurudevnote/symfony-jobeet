@@ -40,6 +40,10 @@ class JobControllerTest extends WebTestCase
         $this->assertEquals($job->getLocationSlug(), $client->getRequest()->attributes->get('location'));
         $this->assertEquals($job->getPositionSlug(), $client->getRequest()->attributes->get('position'));
         $this->assertEquals($job->getId(), $client->getRequest()->attributes->get('id'));
+
+        // an expired job page forwards the user to a 404
+        $client->request('GET', sprintf('/job/sensio-labs/paris-france/%d/web-developer', $this->getExpiredJob()->getId()));
+        $this->assertTrue(404 === $client->getResponse()->getStatusCode());
     }
 
     public function getMostRecentProgrammingJob()
@@ -51,6 +55,17 @@ class JobControllerTest extends WebTestCase
         $query = $em->createQuery('SELECT j from JoBeetBundle:Job j LEFT JOIN j.category c WHERE c.slug = :slug AND j.expires_at > :date ORDER BY j.created_at DESC');
         $query->setParameter('slug', 'programming');
         $query->setParameter('date', date('Y-m-d H:i:s', time()));
+        $query->setMaxResults(1);
+        return $query->getSingleResult();
+    }
+
+    public function getExpiredJob()
+    {
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+
+        $query = $em->createQuery('SELECT j from JoBeetBundle:Job j WHERE j.expires_at < :date');     $query->setParameter('date', date('Y-m-d H:i:s', time()));
         $query->setMaxResults(1);
         return $query->getSingleResult();
     }

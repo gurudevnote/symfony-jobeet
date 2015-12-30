@@ -11,23 +11,28 @@ class JobControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        //list job don't contain expired job
         $crawler = $client->request('GET', '/job');
         $this->assertEquals('JoBeetBundle\Controller\JobController::indexAction', $client->getRequest()->attributes->get('_controller'));
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
         $this->assertTrue($crawler->filter('.jobs td.position:contains("Expired")')->count() == 0);
 
+        //category only show n jobs
         $kernel = static::createKernel();
         $kernel->boot();
         $max_jobs_on_homepage = $kernel->getContainer()->getParameter('max_jobs_on_homepage');
         $this->assertLessThanOrEqual($crawler->filter('.category_programming tr')->count(), $max_jobs_on_homepage);
 
+        //programming and administrator category will show more jobs link.
         $this->assertTrue($crawler->filter('.category_design .more_jobs')->count() == 0);
         $this->assertTrue($crawler->filter('.category_programming .more_jobs')->count() == 1);
         $this->assertTrue($crawler->filter('.category_administrator .more_jobs')->count() == 1);
 
+        //list jobs must sort by created date
         $job = $this->getMostRecentProgrammingJob();
         $this->assertTrue($crawler->filter('.category_programming tr')->first()->filter(sprintf('a[href*="/%d/"]', $job->getId()))->count() == 1);
 
+        //all link must be clickable
         $link = $crawler->selectLink('Web Developer')->first()->link();
         $client->click($link);
         $this->assertEquals('JoBeetBundle\Controller\JobController::showAction', $client->getRequest()->attributes->get('_controller'));

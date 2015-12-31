@@ -52,8 +52,6 @@ class JobController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $job->file->move(__DIR__.'/../../../web/uploads/jobs', $job->file->getClientOriginalName());
-            $job->setLogo($job->file->getClientOriginalName());
             $em->persist($job);
             $em->flush();
 

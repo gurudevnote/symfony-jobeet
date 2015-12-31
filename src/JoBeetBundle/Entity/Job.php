@@ -558,4 +558,24 @@ class Job
     {
         return array_values(static::getTypes());
     }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/jobs';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->logo ? null : $this->getUploadDir().'/'.$this->logo;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->logo ? null : $this->getUploadRootDir().'/'.$this->logo;
+    }
 }

@@ -618,6 +618,9 @@ class Job
         }
     }
 
+    /**
+     * @ORM\PrePersist
+     */
     public function setTokenValue()
     {
         if(!$this->getToken())

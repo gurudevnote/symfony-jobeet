@@ -106,7 +106,7 @@ class JobController extends Controller
             $em->persist($job);
             $em->flush();
 
-            return $this->redirectToRoute('job_edit', array('id' => $job->getId()));
+            return $this->redirectToRoute('job_show', array('id' => $job->getId(), 'company' => $job->getCompanySlug(), 'location' => $job->getLocationSlug(), 'position' => $job->getPositionSlug()));
         }
 
         return $this->render('job/edit.html.twig', array(
